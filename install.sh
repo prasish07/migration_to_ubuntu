@@ -496,6 +496,25 @@ sudo cp -v "$CONF/system/85-canon-capt.rules" /etc/udev/rules.d/85-canon-capt.ru
 sudo udevadm control --reload-rules
 log "Canon printer udev rule applied"
 
+step "Claude Code global settings"
+mkdir -p "$HOME/.claude/plugins/claude-usage-monitor"
+# Global settings (model, statusline, auto permissions)
+cp -v "$CONF/claude/settings.json"       "$HOME/.claude/settings.json"
+# Local permissions allowlist
+cp -v "$CONF/claude/settings.local.json" "$HOME/.claude/settings.local.json"
+# Usage monitor statusline plugin (referenced in settings.json)
+cp -v "$CONF/claude/plugins/claude-usage-monitor/statusline.sh" \
+      "$HOME/.claude/plugins/claude-usage-monitor/statusline.sh"
+cp -v "$CONF/claude/plugins/claude-usage-monitor/statusline.py" \
+      "$HOME/.claude/plugins/claude-usage-monitor/statusline.py"
+chmod +x "$HOME/.claude/plugins/claude-usage-monitor/statusline.sh"
+log "Claude Code settings applied"
+
+step "Claude Code memory files"
+mkdir -p "$HOME/.claude/memory"
+cp -v "$CONF/claude/memory/"*.md "$HOME/.claude/memory/"
+log "Claude Code memory files restored ($(ls "$CONF/claude/memory/"*.md | wc -l) files)"
+
 # =============================================================================
 # PHASE 9 — GNOME / DCONF SETTINGS
 # =============================================================================
@@ -598,7 +617,9 @@ echo -e "${YELLOW} 11. opencode CLI${NC}        → re-install from https://open
 echo -e "${YELLOW} 12. VS Code extensions${NC}  → auto-installed (58 ext); re-login to sync"
 echo -e "${YELLOW} 13. Neovim plugins${NC}      → open nvim — lazy.nvim will auto-install all"
 echo -e "${YELLOW} 14. Bun completions${NC}     → already in .zshrc, loads automatically"
-echo -e "${YELLOW} 15. Nerd Font${NC}           → for Powerlevel10k (MesloLGS NF):"
+echo -e "${YELLOW} 15. Claude Code${NC}         → install: npm i -g @anthropic-ai/claude-code (already in npm globals)"
+echo -e "                          then: claude (memory + settings auto-restored)"
+echo -e "${YELLOW} 16. Nerd Font${NC}           → for Powerlevel10k (MesloLGS NF):"
 echo -e "    wget 'https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf'"
 echo -e "    mv 'MesloLGS NF Regular.ttf' ~/.local/share/fonts/ && fc-cache -fv"
 echo ""

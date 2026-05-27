@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(arecord -l)",
+      "Bash(pactl list *)",
+      "Bash(lsusb)",
+      "Bash(dmesg)",
+      "Bash(lsusb -t)",
+      "Read(//dev/**)",
+      "Bash(flatpak info *)",
+      "Bash(flatpak override *)"
+    ]
+  }
+}

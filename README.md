@@ -61,6 +61,10 @@
 | `dconf/settings.dconf` | Full GNOME dump: Guake keybindings, power settings, interface prefs |
 | `system/85-canon-capt.rules` | Canon LBP2900 printer udev rule |
 | `npm-global-packages.txt` | Reference list of all global npm packages |
+| `claude/settings.json` | Claude Code global: model `sonnet[1m]`, statusline, `defaultMode: auto`, skip permission prompts |
+| `claude/settings.local.json` | Claude Code local permission allowlist (arecord, pactl, lsusb, flatpak, etc.) |
+| `claude/memory/*.md` | All 4 Claude Code memory files: user profile, RN/Expo stack, architecture pattern, project setup workflow |
+| `claude/plugins/claude-usage-monitor/` | Custom statusline plugin (shows 5h/7d quota usage, tokens, git branch, cost) |
 
 ---
 

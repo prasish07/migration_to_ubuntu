@@ -1,0 +1,13 @@
+{
+  "model": "sonnet[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/prasish/.claude/plugins/claude-usage-monitor/statusline.sh",
+    "padding": 0
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
+  "permissions": {
+    "defaultMode": "auto"
+  }
+}
