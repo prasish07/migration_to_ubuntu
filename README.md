@@ -61,6 +61,11 @@
 | `dconf/settings.dconf` | Full GNOME dump: Guake keybindings, power settings, interface prefs |
 | `system/85-canon-capt.rules` | Canon LBP2900 printer udev rule |
 | `npm-global-packages.txt` | Reference list of all global npm packages |
+| `dbeaver/data-sources.json` | DBeaver connections: PostgreSQL `subscription_db` on localhost:5432, connection type settings |
+| `dbeaver/project-settings.json` | DBeaver project settings |
+| `transmission/settings.json` | Transmission: download dir `~/Downloads`, peer port 51413, queue size 5, ratio limit 2, DHT/PEX on |
+| `vlc/vlcrc` | VLC preferences: privacy ask disabled, metadata network access enabled |
+| `vlc/vlc-qt-interface.conf` | VLC window layout (playlist docked, no status bar) |
 | `claude/settings.json` | Claude Code global: model `sonnet[1m]`, statusline, `defaultMode: auto`, skip permission prompts |
 | `claude/settings.local.json` | Claude Code local permission allowlist (arecord, pactl, lsusb, flatpak, etc.) |
 | `claude/memory/*.md` | All 4 Claude Code memory files: user profile, RN/Expo stack, architecture pattern, project setup workflow |
@@ -129,6 +134,7 @@
 | **Cursor AI** | https://cursor.com | Download .deb, config auto-restored |
 | **Canon cndrvcups** | https://www.canon-europe.com/support/ | cndrvcups-capt driver |
 | **opencode CLI** | https://opencode.ai | Re-install binary |
+| **Steam** | Auto-handled | Login → games re-download, cloud saves restore automatically |
 
 ---
 

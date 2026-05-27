@@ -496,6 +496,38 @@ sudo cp -v "$CONF/system/85-canon-capt.rules" /etc/udev/rules.d/85-canon-capt.ru
 sudo udevadm control --reload-rules
 log "Canon printer udev rule applied"
 
+step "DBeaver CE — database connections"
+# DBeaver must have been launched at least once to create workspace dirs
+mkdir -p "$HOME/.local/share/DBeaverData/workspace6/General/.dbeaver"
+cp -v "$CONF/dbeaver/data-sources.json" \
+      "$HOME/.local/share/DBeaverData/workspace6/General/.dbeaver/data-sources.json"
+[ -f "$CONF/dbeaver/project-settings.json" ] && \
+  cp -v "$CONF/dbeaver/project-settings.json" \
+        "$HOME/.local/share/DBeaverData/workspace6/General/.dbeaver/project-settings.json"
+warn "DBeaver: re-enter DB passwords after first launch (credentials not migrated for security)"
+log "DBeaver connection definitions restored (subscription_db + connection types)"
+
+step "Transmission — settings"
+mkdir -p "$HOME/.config/transmission"
+# Remove window geometry (screen-size dependent) before copying
+python3 -c "
+import json, sys
+with open('$CONF/transmission/settings.json') as f:
+    s = json.load(f)
+# Strip window-position fields (monitor-layout specific)
+for key in ['main-window-x','main-window-y','main-window-height','main-window-width','main-window-is-maximized']:
+    s.pop(key, None)
+with open('$HOME/.config/transmission/settings.json','w') as f:
+    json.dump(s, f, indent=4)
+"
+log "Transmission settings restored (download dir, queue size, peer port, ratio limit)"
+
+step "VLC — preferences"
+mkdir -p "$HOME/.config/vlc"
+cp -v "$CONF/vlc/vlcrc"                 "$HOME/.config/vlc/vlcrc"
+cp -v "$CONF/vlc/vlc-qt-interface.conf" "$HOME/.config/vlc/vlc-qt-interface.conf"
+log "VLC config restored (privacy & network settings, window layout)"
+
 step "Claude Code global settings"
 mkdir -p "$HOME/.claude/plugins/claude-usage-monitor"
 # Global settings (model, statusline, auto permissions)
@@ -617,7 +649,10 @@ echo -e "${YELLOW} 11. opencode CLI${NC}        → re-install from https://open
 echo -e "${YELLOW} 12. VS Code extensions${NC}  → auto-installed (58 ext); re-login to sync"
 echo -e "${YELLOW} 13. Neovim plugins${NC}      → open nvim — lazy.nvim will auto-install all"
 echo -e "${YELLOW} 14. Bun completions${NC}     → already in .zshrc, loads automatically"
-echo -e "${YELLOW} 15. Claude Code${NC}         → install: npm i -g @anthropic-ai/claude-code (already in npm globals)"
+echo -e "${YELLOW} 15. DBeaver passwords${NC}   → re-enter DB passwords on first launch (not migrated for security)"
+echo -e "${YELLOW} 16. Steam games${NC}         → login to Steam → games re-download automatically"
+echo -e "                          Cloud saves restore on first launch per game"
+echo -e "${YELLOW} 17. Claude Code${NC}         → install: npm i -g @anthropic-ai/claude-code (already in npm globals)"
 echo -e "                          then: claude (memory + settings auto-restored)"
 echo -e "${YELLOW} 16. Nerd Font${NC}           → for Powerlevel10k (MesloLGS NF):"
 echo -e "    wget 'https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf'"
