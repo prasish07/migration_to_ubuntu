@@ -558,6 +558,49 @@ cp -v "$CONF/vlc/vlcrc"                 "$HOME/.config/vlc/vlcrc"
 cp -v "$CONF/vlc/vlc-qt-interface.conf" "$HOME/.config/vlc/vlc-qt-interface.conf"
 log "VLC config restored (privacy & network settings, window layout)"
 
+step "Default apps (mimeapps) — Chrome as browser, Claude CLI handler"
+cp -v "$CONF/mimeapps/mimeapps.list" "$HOME/.config/mimeapps.list"
+log "Default application associations restored"
+
+step "XDG user dirs (Desktop, Downloads, Documents…)"
+cp -v "$CONF/mimeapps/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
+xdg-user-dirs-update 2>/dev/null || true
+log "XDG user directories set"
+
+step "SSH authorized_keys"
+mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
+cp -v "$CONF/ssh/authorized_keys" "$HOME/.ssh/authorized_keys"
+chmod 600 "$HOME/.ssh/authorized_keys"
+log "SSH authorized_keys restored"
+
+step "Qalculate calculator preferences"
+mkdir -p "$HOME/.config/qalculate"
+cp -v "$CONF/qalculate/qalc.cfg" "$HOME/.config/qalculate/qalc.cfg"
+log "Qalculate config restored"
+
+step "NVIDIA settings"
+cp -v "$CONF/nvidia/nvidia-settings-rc" "$HOME/.nvidia-settings-rc"
+log "NVIDIA settings restored"
+
+step "code-server config (password masked — update before use)"
+mkdir -p "$HOME/.config/code-server"
+cp -v "$CONF/code-server/config.yaml" "$HOME/.config/code-server/config.yaml"
+warn "code-server: edit ~/.config/code-server/config.yaml and set your password (currently CHANGE_ME)"
+log "code-server config restored on port 8080"
+
+step "rclone remote structure (gdrive, gdrive2)"
+mkdir -p "$HOME/.config/rclone"
+cp -v "$CONF/rclone/rclone.conf" "$HOME/.config/rclone/rclone.conf"
+warn "rclone: re-authenticate remotes after install:"
+warn "  rclone config reconnect gdrive:"
+warn "  rclone config reconnect gdrive2:"
+log "rclone remote structure restored"
+
+step "OpenTabletDriver — enable systemd user service"
+systemctl --user enable --now opentabletdriver 2>/dev/null || \
+  warn "OpenTabletDriver service not found — install OpenTabletDriver first then run: systemctl --user enable --now opentabletdriver"
+log "OpenTabletDriver service enabled"
+
 step "Claude Code global settings"
 mkdir -p "$HOME/.claude/plugins/claude-usage-monitor"
 # Global settings (model, statusline, auto permissions)
@@ -672,7 +715,9 @@ echo -e "${YELLOW}  5. Cursor AI editor${NC}    → https://cursor.com (download
 echo -e "${YELLOW}  6. Tailscale login${NC}     → run: sudo tailscale up"
 echo -e "${YELLOW}  7. GitHub CLI auth${NC}     → run: gh auth login"
 echo -e "${YELLOW}  8. ngrok authtoken${NC}     → run: ngrok config add-authtoken YOUR_TOKEN"
-echo -e "${YELLOW}  9. rclone remotes${NC}      → run: rclone config (re-auth gdrive)"
+echo -e "${YELLOW}  9. rclone remotes${NC}      → run: rclone config reconnect gdrive: && rclone config reconnect gdrive2:"
+echo -e "${YELLOW} 10. Stripe CLI${NC}          → run: stripe login  (live keys NOT migrated — see SECURITY_WARNING.md)"
+echo -e "${YELLOW} 11. code-server password${NC}→ edit ~/.config/code-server/config.yaml (set password, currently CHANGE_ME)"
 echo -e "${YELLOW} 10. Canon printer${NC}       → cndrvcups-capt from Canon:"
 echo -e "                          https://www.canon-europe.com/support/consumer_products/software/"
 echo -e "${YELLOW} 11. opencode CLI${NC}        → re-install from https://opencode.ai"
