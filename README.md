@@ -61,6 +61,10 @@
 | `dconf/settings.dconf` | Full GNOME dump: Guake keybindings, power settings, interface prefs |
 | `system/85-canon-capt.rules` | Canon LBP2900 printer udev rule |
 | `npm-global-packages.txt` | Reference list of all global npm packages |
+| `containers/dev-services/compose.yml` | MySQL 8.0 + Redis 7 + Adminer (always-on dev tools) |
+| `containers/subscription/docker-compose.yml` | Postgres 16-alpine + Redis 7-alpine (subscription project) |
+| `containers/seatflow/docker-compose.yml` | Postgres 15 + Redis 7 (seatflow project) |
+| `containers/spin-up.sh` | Master script to start/stop/pull any or all stacks |
 | `dbeaver/data-sources.json` | DBeaver connections: PostgreSQL `subscription_db` on localhost:5432, connection type settings |
 | `dbeaver/project-settings.json` | DBeaver project settings |
 | `transmission/settings.json` | Transmission: download dir `~/Downloads`, peer port 51413, queue size 5, ratio limit 2, DHT/PEX on |
@@ -70,6 +74,31 @@
 | `claude/settings.local.json` | Claude Code local permission allowlist (arecord, pactl, lsusb, flatpak, etc.) |
 | `claude/memory/*.md` | All 4 Claude Code memory files: user profile, RN/Expo stack, architecture pattern, project setup workflow |
 | `claude/plugins/claude-usage-monitor/` | Custom statusline plugin (shows 5h/7d quota usage, tokens, git branch, cost) |
+
+---
+
+## Containers
+
+All images are pre-pulled by the install script. To spin up after migration:
+
+```bash
+cd ~/dev-services
+bash spin-up.sh all          # start all three stacks
+bash spin-up.sh dev          # MySQL + Redis + Adminer only
+bash spin-up.sh subscription # Postgres 16 + Redis (subscription project)
+bash spin-up.sh seatflow     # Postgres 15 + Redis (seatflow project)
+bash spin-up.sh stop         # stop everything
+bash spin-up.sh status       # show running containers
+bash spin-up.sh pull         # refresh all images
+```
+
+| Stack | Containers | Ports |
+|-------|-----------|-------|
+| **dev-services** | `dev-mysql` (MySQL 8.0), `dev-redis` (Redis 7), `dev-adminer` (Adminer) | 3306, 6379, 8081 |
+| **subscription** | `subscription-postgres` (Postgres 16-alpine), `subscription-redis` (Redis 7-alpine) | 5432, 6379 |
+| **seatflow** | `seatflow_postgres_1` (Postgres 15), `seatflow_redis_1` (Redis 7) | 5432, 6379 |
+
+> ⚠️ `subscription` and `seatflow` both bind port **5432** — only run one at a time, or change one stack's host port.
 
 ---
 

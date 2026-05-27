@@ -496,6 +496,36 @@ sudo cp -v "$CONF/system/85-canon-capt.rules" /etc/udev/rules.d/85-canon-capt.ru
 sudo udevadm control --reload-rules
 log "Canon printer udev rule applied"
 
+step "Podman containers — pull all images & install compose files"
+# Install podman-compose if not already done
+sudo apt install -y podman-compose 2>&1 | tail -2 | tee -a "$LOG_FILE"
+
+CONTAINERS_DIR="$CONF/containers"
+
+# Copy compose files into place
+mkdir -p "$HOME/dev-services"
+cp -v "$CONTAINERS_DIR/dev-services/compose.yml" "$HOME/dev-services/compose.yml"
+mkdir -p "$HOME/containers/subscription"
+cp -v "$CONTAINERS_DIR/subscription/docker-compose.yml" "$HOME/containers/subscription/docker-compose.yml"
+mkdir -p "$HOME/containers/seatflow"
+cp -v "$CONTAINERS_DIR/seatflow/docker-compose.yml" "$HOME/containers/seatflow/docker-compose.yml"
+
+# Copy spin-up helper
+cp -v "$CONTAINERS_DIR/spin-up.sh" "$HOME/dev-services/spin-up.sh"
+chmod +x "$HOME/dev-services/spin-up.sh"
+
+info "Pulling all container images (this may take a while)..."
+podman pull docker.io/library/mysql:8.0        2>&1 | tail -1 | tee -a "$LOG_FILE"
+podman pull docker.io/library/postgres:16-alpine 2>&1 | tail -1 | tee -a "$LOG_FILE"
+podman pull docker.io/library/postgres:15       2>&1 | tail -1 | tee -a "$LOG_FILE"
+podman pull docker.io/library/redis:7           2>&1 | tail -1 | tee -a "$LOG_FILE"
+podman pull docker.io/library/redis:7-alpine    2>&1 | tail -1 | tee -a "$LOG_FILE"
+podman pull docker.io/library/adminer:latest    2>&1 | tail -1 | tee -a "$LOG_FILE"
+
+log "All container images pulled. To start containers:"
+log "  cd ~/dev-services && bash spin-up.sh all"
+log "  or: bash spin-up.sh dev | subscription | seatflow"
+
 step "DBeaver CE — database connections"
 # DBeaver must have been launched at least once to create workspace dirs
 mkdir -p "$HOME/.local/share/DBeaverData/workspace6/General/.dbeaver"
