@@ -1,0 +1,99 @@
+{
+  "Revision": "0.6.6.2",
+  "Profiles": [
+    {
+      "Tablet": "XP-Pen Star G960S",
+      "OutputMode": {
+        "Path": "OpenTabletDriver.Desktop.Output.AbsoluteMode",
+        "Settings": [],
+        "Enable": true
+      },
+      "Filters": [],
+      "AbsoluteModeSettings": {
+        "Display": {
+          "Width": 3840.0,
+          "Height": 1080.0,
+          "X": 1920.0,
+          "Y": 540.0,
+          "Rotation": 0.0
+        },
+        "Tablet": {
+          "Width": 228.8,
+          "Height": 152.6,
+          "X": 114.4,
+          "Y": 76.30001,
+          "Rotation": 180.0
+        },
+        "EnableClipping": true,
+        "EnableAreaLimiting": false,
+        "LockAspectRatio": false
+      },
+      "RelativeModeSettings": {
+        "XSensitivity": 10.0,
+        "YSensitivity": 10.0,
+        "RelativeRotation": 0.0,
+        "RelativeResetDelay": "00:00:00.1000000"
+      },
+      "Bindings": {
+        "TipActivationThreshold": 1.0,
+        "TipButton": {
+          "Path": "OpenTabletDriver.Desktop.Binding.AdaptiveBinding",
+          "Settings": [
+            {
+              "Property": "Binding",
+              "Value": "Tip"
+            }
+          ],
+          "Enable": true
+        },
+        "EraserActivationThreshold": 1.0,
+        "EraserButton": {
+          "Path": "OpenTabletDriver.Desktop.Binding.AdaptiveBinding",
+          "Settings": [
+            {
+              "Property": "Binding",
+              "Value": "Eraser"
+            }
+          ],
+          "Enable": true
+        },
+        "PenButtons": [
+          {
+            "Path": "OpenTabletDriver.Desktop.Binding.AdaptiveBinding",
+            "Settings": [
+              {
+                "Property": "Binding",
+                "Value": "Button 1"
+              }
+            ],
+            "Enable": true
+          },
+          {
+            "Path": "OpenTabletDriver.Desktop.Binding.AdaptiveBinding",
+            "Settings": [
+              {
+                "Property": "Binding",
+                "Value": "Button 2"
+              }
+            ],
+            "Enable": true
+          }
+        ],
+        "AuxButtons": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "MouseButtons": [],
+        "MouseScrollUp": null,
+        "MouseScrollDown": null,
+        "DisablePressure": false,
+        "DisableTilt": false
+      }
+    }
+  ],
+  "LockUsableAreaDisplay": false,
+  "LockUsableAreaTablet": true,
+  "Tools": []
+}

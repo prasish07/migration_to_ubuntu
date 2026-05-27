@@ -1,0 +1,1 @@
+KERNEL=="lp[0-9]*", SUBSYSTEMS=="usb", ATTRS{serial}=="0000C340EM3l", SYMLINK+="canonLBP2900"

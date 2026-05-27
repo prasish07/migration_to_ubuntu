@@ -1,0 +1,15 @@
+[user]
+	name = prasish07
+	email = prasishshrestha0099@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[pull]
+	rebase = false
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

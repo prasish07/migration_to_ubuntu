@@ -1,0 +1,144 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.fontWeight": "normal",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.mouseWheelZoom": true,
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+    "discord.lowerDetailsDebugging": "Hello there :)",
+    "discord.lowerDetailsEditing": "Hello there :)",
+    "discord.detailsDebugging": "Hello there :)",
+    "discord.lowerDetailsIdling": "idle",
+    "discord.largeImageIdling": "Hello there :)",
+    "discord.detailsEditing": "Editing a file right now : )",
+    "discord.detailsIdling": "Hello there :)",
+    "security.workspace.trust.untrustedFiles": "open",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "githubPullRequests.pullBranch": "never",
+    "chatgpt.lang": "en",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "cSpell.userWords": [
+        "childrens",
+        "COMPARISION",
+        "consts",
+        "DSAB",
+        "DSADFS",
+        "hari",
+        "Heapify",
+        "inorder",
+        "Keyinsights",
+        "malloc",
+        "nextjs",
+        "nextofficeflow",
+        "Pannable",
+        "parewalabs",
+        "programiz",
+        "Rperceptron",
+        "shyam",
+        "sonarjs",
+        "svix",
+        "tailwindcss",
+        "tanstack",
+        "teritary",
+        "tgmenu",
+        "Upvotes",
+        "zoomable"
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "eslint.codeActionsOnSave.rules": null,
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "workbench.preferredLightColorTheme": "Ayu Mirage Bordered",
+    "workbench.preferredDarkColorTheme": "Arc Dark",
+    "editor.minimap.enabled": false,
+    "debug.javascript.autoAttachFilter": "always",
+    "explorer.confirmDelete": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.fontFamily": "'Cascadia Code', 'Jetbrains Mono', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.lineHeight": 24,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "explorer.confirmPasteNative": false,
+    "workbench.startupEditor": "none",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "prisma.showPrismaDataPlatformNotification": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "files.trimTrailingWhitespace": true,
+    "prettier.resolveGlobalModules": true,
+    "window.density.editorTabHeight": "compact",
+    "window.titleBarStyle": "custom",
+    "[php]": {
+        "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+    },
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "editor.formatOnSave": true,
+    "files.autoSaveWhenNoErrors": true,
+    "window.customTitleBarVisibility": "auto",
+    "workbench.sideBar.location": "right",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "typescriptreact": true,
+        "scss": true,
+        "typescript": true
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "todo-tree.customHighlight": {
+        "TODO": {
+            "icon": "check",
+            "type": "line",
+            "iconColour": "yellow",
+            "foreground": "red",
+            "background": "yellow"
+        },
+        "FIXME": {
+            "icon": "beaker",
+            "iconColour": "red",
+            "foreground": "white",
+            "background": "red"
+        }
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check",
+            "type": "line",
+            "iconColour": "yellow",
+            "foreground": "red",
+            "background": "yellow"
+        },
+        "FIXME": {
+            "icon": "beaker",
+            "iconColour": "red",
+            "foreground": "white",
+            "background": "red"
+        }
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.env.linux": {},
+    "console-ninja.featureSet": "Community",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "debug.onTaskErrors": "debugAnyway",
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "markdown",
+        "scminput"
+    ]
+}

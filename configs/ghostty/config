@@ -1,0 +1,26 @@
+# Ghostty Config
+
+# Splits
+keybind = shift+alt+d=new_split:right
+keybind = shift+alt+s=new_split:down
+keybind = shift+alt+w=close_surface
+
+# New tab
+keybind = shift+alt+q=new_tab
+
+# Focus split navigation
+keybind = alt+down=goto_split:bottom
+keybind = alt+up=goto_split:top
+keybind = alt+left=goto_split:left
+keybind = alt+right=goto_split:right
+
+# Switch tabs 1-9
+keybind = alt+one=goto_tab:1
+keybind = alt+two=goto_tab:2
+keybind = alt+three=goto_tab:3
+keybind = alt+four=goto_tab:4
+keybind = alt+five=goto_tab:5
+keybind = alt+six=goto_tab:6
+keybind = alt+seven=goto_tab:7
+keybind = alt+eight=goto_tab:8
+keybind = alt+nine=goto_tab:9
